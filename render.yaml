@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: traffic-sign-detection
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    disk:
+      name: blockchain-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /data
+      - key: GROQ_API_KEY
+        sync: false
